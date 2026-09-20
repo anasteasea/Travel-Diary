@@ -1,0 +1,88 @@
+/* Сохраняются все базовые стили из предыдущего шага */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
+body { background: linear-gradient(135deg, #74b9ff, #0984e3); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+.hidden { display: none !important; }
+.auth-container { background-color: #ffffff; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); width: 100%; max-width: 400px; padding: 24px; }
+.tab-buttons { display: flex; margin-bottom: 24px; border-bottom: 2px solid #f1f2f6; }
+.tab-btn { flex: 1; background: none; border: none; padding: 12px; font-size: 16px; font-weight: 600; color: #a4b0be; cursor: pointer; transition: all 0.3s; }
+.tab-btn.active { color: #0984e3; border-bottom: 2px solid #0984e3; margin-bottom: -2px; }
+.auth-form { display: none; }
+.auth-form.active { display: block; }
+
+.main-container { width: 100%; max-width: 1200px; background: #f1f2f6; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); overflow: hidden; align-self: flex-start; }
+.app-header { background: #0984e3; color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+.header-right { display: flex; align-items: center; gap: 15px; }
+.user-badge { background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 14px; }
+.logout-btn { background: rgba(255,255,255,0.2); border: 1px solid white; color: white; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 600; }
+.logout-btn:hover { background: white; color: #0984e3; }
+
+#map-section { padding: 20px 20px 0 20px; }
+#map { width: 100%; height: 250px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 1; }
+
+/* ПАНЕЛЬ ФИЛЬТРОВ И ВКЛАДКИ */
+.filter-panel { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 15px; padding: 15px 20px; background: #e4e7eb; border-bottom: 1px solid #ced6e0; margin-top: 15px; }
+.feed-toggle { display: flex; gap: 10px; }
+.feed-tab-btn { background: #dcdde1; border: none; padding: 10px 16px; font-weight: bold; border-radius: 6px; cursor: pointer; color: #2f3542; transition: all 0.2s; }
+.feed-tab-btn.active { background: #0984e3; color: white; }
+.filter-controls { display: flex; gap: 10px; flex-wrap: wrap; }
+.filter-group select, .filter-group input { padding: 8px 12px; border: 1px solid #ced6e0; border-radius: 6px; outline: none; font-size: 14px; }
+
+/* ДАШБОРД */
+.dashboard { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; }
+.editor-side { flex: 1; min-width: 320px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); height: fit-content; }
+.feed-side { flex: 2; min-width: 450px; }
+h2 { color: #2f3542; margin-bottom: 15px; }
+.input-group { margin-bottom: 12px; }
+.input-group label { display: block; margin-bottom: 4px; color: #57606f; font-size: 13px; font-weight: 600; }
+.input-group input, .input-group input { width: 100%; padding: 8px 10px; border: 1px solid #ced6e0; border-radius: 6px; outline: none; font-size: 14px; }
+.input-group input:focus { border-color: #0984e3; }
+.hint { font-size: 11px; color: #747d8c; display: block; margin-top: 2px; }
+.geo-input-wrapper { display: flex; gap: 8px; }
+#geo-btn { background: #e1f5fe; border: 1px solid #0984e3; border-radius: 6px; padding: 0 12px; cursor: pointer; }
+
+.ratings-block { background: #f8f9fa; padding: 12px; border-radius: 8px; margin-bottom: 15px; }
+.ratings-block h3 { font-size: 13px; color: #2f3542; margin-bottom: 8px; }
+.range-group { margin-bottom: 6px; }
+.range-group label { display: flex; justify-content: space-between; font-size: 12px; color: #57606f; }
+.range-group input { width: 100%; cursor: pointer; }
+
+.form-buttons { display: flex; gap: 10px; }
+.submit-btn { flex: 2; background: #0984e3; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+.submit-btn:hover { background: #076bba; }
+.cancel-btn { flex: 1; background: #ff4757; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+.cancel-btn:hover { background: #ff6b81; }
+
+/* КАРТОЧКИ С СОЦ-ФУНКЦИЯМИ */
+.posts-list { display: flex; flex-direction: column; gap: 25px; }
+.post-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: relative; }
+.post-author { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.6); color: white; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; z-index: 2; }
+.post-actions { position: absolute; top: 10px; right: 10px; display: flex; gap: 6px; z-index: 2; }
+.action-btn { border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.3); transition: transform 0.2s; }
+.action-btn:hover { transform: scale(1.1); }
+.edit-btn { background: #ffa502; color: white; }
+.delete-btn { background: #ff4757; color: white; }
+
+.post-img { width: 100%; max-height: 240px; object-fit: cover; }
+.post-content { padding: 15px; }
+.post-header-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.post-location { font-size: 18px; color: #0984e3; font-weight: bold; }
+.post-cost { background: #2ed573; color: white; padding: 4px 10px; border-radius: 20px; font-weight: bold; font-size: 13px; }
+.post-details p { font-size: 13px; margin-bottom: 6px; color: #57606f; }
+.post-details strong { color: #2f3542; }
+.post-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; border-top: 1px solid #f1f2f6; padding-top: 10px; margin-bottom: 12px; }
+.badge { background: #f1f2f6; padding: 4px 6px; border-radius: 4px; font-size: 11px; color: #2f3542; }
+
+/* БЛОК СТАТИСТИКИ (ЛАЙКИ) И КОММЕНТАРИИ */
+.social-bar { display: flex; align-items: center; gap: 15px; padding-top: 10px; border-top: 1px solid #f1f2f6; }
+.like-btn { background: none; border: none; font-size: 16px; cursor: pointer; display: flex; align-items: center; gap: 5px; color: #747d8c; font-weight: bold; transition: transform 0.1s; }
+.like-btn.liked { color: #ff4757; transform: scale(1.05); }
+
+.comments-section { background: #f8f9fa; margin-top: 12px; padding: 12px; border-radius: 8px; }
+.comments-section h4 { font-size: 12px; color: #747d8c; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+.comments-list { display: flex; flex-direction: column; gap: 6px; max-height: 120px; overflow-y: auto; margin-bottom: 10px; padding-right: 5px; }
+.comment-item { font-size: 12px; line-height: 1.4; color: #2f3542; background: white; padding: 6px 10px; border-radius: 6px; border-left: 3px solid #0984e3; }
+.comment-item strong { color: #0984e3; }
+
+.comment-form { display: flex; gap: 8px; }
+.comment-form input { flex: 1; padding: 6px 10px; border: 1px solid #ced6e0; border-radius: 4px; font-size: 12px; outline: none; }
+.comment-form button { background: #0984e3; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-size: 12px; cursor: pointer; font-weight: bold; }

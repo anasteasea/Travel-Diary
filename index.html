@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дневник путешествий PRO-Сообщество</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ЭКРАН АВТОРИЗАЦИИ -->
+    <div id="auth-screen" class="auth-container">
+        <div class="tab-buttons">
+            <button id="tab-login" class="tab-btn active">Вход</button>
+            <button id="tab-register" class="tab-btn">Регистрация</button>
+        </div>
+        <form id="form-login" class="auth-form active">
+            <h2>Рады возвращению!</h2>
+            <div class="input-group"><label>Email или Логин</label><input type="text" id="login-username" required placeholder="Введите логин"></div>
+            <div class="input-group"><label>Пароль</label><input type="password" id="login-password" required placeholder="Введите пароль"></div>
+            <button type="submit" class="submit-btn">Войти в дневник</button>
+        </form>
+        <form id="form-register" class="auth-form">
+            <h2>Создать аккаунт</h2>
+            <div class="input-group"><label>Логин</label><input type="text" id="reg-username" required></div>
+            <div class="input-group"><label>Электронная почта</label><input type="email" id="reg-email" required></div>
+            <div class="input-group"><label>Номер телефона</label><input type="tel" id="reg-phone" required></div>
+            <div class="input-group"><label>Пароль</label><input type="password" id="reg-password" required></div>
+            <button type="submit" class="submit-btn">Зарегистрироваться</button>
+        </form>
+    </div>
+
+    <!-- ГЛАВНЫЙ ЭКРАН ДНЕВНИКА -->
+    <div id="main-screen" class="main-container hidden">
+        <header class="app-header">
+            <h1>🌍 Дневник Путешествий & Сообщество</h1>
+            <div class="header-right">
+                <span id="user-badge" class="user-badge">@traveler</span>
+                <button id="logout-btn" class="logout-btn">Выйти</button>
+            </div>
+        </header>
+
+        <!-- ИНТЕРАКТИВНАЯ КАРТА -->
+        <section id="map-section">
+            <div id="map"></div>
+        </section>
+
+        <!-- ВКЛАДКИ ЛЕНТЫ + СОРТИРОВКА -->
+        <section class="filter-panel">
+            <div class="feed-toggle">
+                <button id="feed-all-btn" class="feed-tab-btn active">👥 Общая лента</button>
+                <button id="feed-my-btn" class="feed-tab-btn">🔒 Мой дневник</button>
+            </div>
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <select id="sort-select">
+                        <option value="newest">Сначала новые</option>
+                        <option value="popular">Самые популярные (🔥)</option>
+                        <option value="cheap">Сначала бюджетные</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <input type="text" id="search-input" placeholder="Поиск места...">
+                </div>
+            </div>
+        </section>
+
+        <div class="dashboard">
+            <!-- Редактор / Создание поста -->
+            <aside class="editor-side">
+                <h2 id="form-title">Новое путешествие</h2>
+                <form id="post-form">
+                    <input type="hidden" id="post-id">
+                    
+                    <div class="input-group">
+                        <label>Местоположение</label>
+                        <div class="geo-input-wrapper">
+                            <input type="text" id="post-location" required placeholder="Координаты (или клик на карте)">
+                            <button type="button" id="geo-btn" title="По GPS">📍</button>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Название места / Город</label>
+                        <input type="text" id="post-title" required placeholder="Рим, Италия">
+                    </div>
+                    <div class="input-group">
+                        <label>Загрузить фото с устройства</label>
+                        <input type="file" id="post-image-file" accept="image/*">
+                        <small class="hint">Выберите изображение в формате JPG/PNG</small>
+                    </div>
+                    <div class="input-group">
+                        <label>Стоимость поездки ($)</label>
+                        <input type="number" id="post-cost" required min="0" placeholder="Расходы">
+                    </div>
+                    <div class="input-group">
+                        <label>Объекты культурного наследия</label>
+                        <input type="text" id="post-heritage" placeholder="Колизей, Пантеон">
+                    </div>
+                    <div class="input-group">
+                        <label>Места для посещения</label>
+                        <input type="text" id="post-places" placeholder="Трастевере, фонтан Треви">
+                    </div>
+
+                    <div class="ratings-block">
+                        <h3>Оценка локации (1-5)</h3>
+                        <div class="range-group"><label>🚲 Транспорт: <span id="val-transport">5</span></label><input type="range" id="rate-transport" min="1" max="5" value="5"></div>
+                        <div class="range-group"><label>🛡️ Безопасность: <span id="val-safety">5</span></label><input type="range" id="rate-safety" min="1" max="5" value="5"></div>
+                        <div class="range-group"><label>👥 Населенность: <span id="val-population">3</span></label><input type="range" id="rate-population" min="1" max="5" value="3"></div>
+                        <div class="range-group"><label>🌿 Растительность: <span id="val-nature">5</span></label><input type="range" id="rate-nature" min="1" max="5" value="5"></div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" id="submit-form-btn" class="submit-btn">Опубликовать</button>
+                        <button type="button" id="cancel-edit-btn" class="cancel-btn hidden">Отмена</button>
+                    </div>
+                </form>
+            </aside>
+
+            <!-- Лента -->
+            <main class="feed-side">
+                <h2 id="feed-title">Общая лента путешествий</h2>
+                <div id="posts-container" class="posts-list"></div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Подключение API Яндекс.Карт (версия 2.1) -->
+    <script src="https://yandex.ru" type="text/javascript"></script>
+    <script src="app.js"></script>
+</body>
+</html>
